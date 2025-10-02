@@ -3,6 +3,7 @@ package se.jensen.guven.webshop.model;
 public class Computer extends Product{
     @Override
     public String category() {
+
         return "Dator";
     }
 
