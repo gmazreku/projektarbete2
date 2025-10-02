@@ -15,14 +15,17 @@ public abstract class Product {
 
 
     public int getArticleNumber() {
+
         return articleNumber;
     }
 
     public void setArticleNumber(int articleNumber) {
+
         this.articleNumber = articleNumber;
     }
 
     public String getTitle() {
+
         return title;
     }
 
@@ -32,6 +35,7 @@ public abstract class Product {
     }
 
     public double getPrice() {
+
         return price;
     }
 
