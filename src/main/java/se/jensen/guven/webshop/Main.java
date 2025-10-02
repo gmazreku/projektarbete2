@@ -19,7 +19,6 @@ public class Main {
            System.out.println("Beskrivning: " + p.getDescription());
            System.out.println("Kategori: " + p.category());
            System.out.println("############################");
-           System.out.println("Test");
        }
     }
 }
