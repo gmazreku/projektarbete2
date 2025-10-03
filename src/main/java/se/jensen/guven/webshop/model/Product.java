@@ -19,19 +19,9 @@ public abstract class Product {
         return articleNumber;
     }
 
-    public void setArticleNumber(int articleNumber) {
-
-        this.articleNumber = articleNumber;
-    }
-
     public String getTitle() {
 
         return title;
-    }
-
-    public void setTitle(String title) {
-
-        this.title = title;
     }
 
     public double getPrice() {
@@ -39,19 +29,10 @@ public abstract class Product {
         return price;
     }
 
-    public void setPrice(double price) {
-
-        this.price = price;
-    }
 
     public String getDescription() {
 
         return description;
-    }
-
-    public void setDescription(String description) {
-
-        this.description = description;
     }
 
     public abstract String category();
