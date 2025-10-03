@@ -48,7 +48,7 @@ public class Main {
                         }
                         case "4" -> {
                             System.out.println("Går tillbaka..");
-                            return;
+                            break;
                         }
                         default -> System.out.println("Ogiltigt val, skriv siffran igen.");
                     }
