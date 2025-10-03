@@ -1,5 +1,6 @@
 package se.jensen.guven.webshop;
 
+import se.jensen.guven.webshop.model.Computer;
 import se.jensen.guven.webshop.model.Lists;
 import se.jensen.guven.webshop.model.Product;
 
@@ -38,7 +39,23 @@ public class Main {
                     input = scanner.nextLine().trim();
                     switch(input){
                         case "1" -> {
-                            System.out.println("1");
+                            System.out.println("Lägg till ett artikelnummer:");
+                            int articleNumber = Integer.parseInt(scanner.nextLine().trim());
+
+                            System.out.println("Skriv vad datorn heter:");
+                            String title = scanner.nextLine().trim();
+
+                            System.out.println("Vad kostar varan i kronor? Skriv endast siffror:");
+                            double price = Double.parseDouble(scanner.nextLine().trim());
+
+                            System.out.println("Skriv en beskrivning om produkten:");
+                            String description = scanner.nextLine().trim();
+
+                            Computer computer = new Computer(articleNumber, title, price, description);
+
+                            lists.addProduct(computer);
+
+                            System.out.println("Datorn är nu tillagd med artikelnummer " + articleNumber );
                         }
                         case "2" -> {
                             System.out.println("2");
