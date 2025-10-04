@@ -1,8 +1,6 @@
 package se.jensen.guven.webshop;
 
-import se.jensen.guven.webshop.model.Computer;
-import se.jensen.guven.webshop.model.Lists;
-import se.jensen.guven.webshop.model.Product;
+import se.jensen.guven.webshop.model.*;
 
 import java.util.Scanner;
 
@@ -58,10 +56,42 @@ public class Main {
                             System.out.println("Datorn är nu tillagd med artikelnummer " + articleNumber );
                         }
                         case "2" -> {
-                            System.out.println("2");
+                            System.out.println("Lägg till ett artikelnummer");
+                            int articleNumber = Integer.parseInt(scanner.nextLine().trim());
+
+                            System.out.println("Skriv vad telefonen heter:");
+                            String title = scanner.nextLine().trim();
+
+                            System.out.println("Vad kostar varan i kronor? Skriv endast siffror:");
+                            double price = Double.parseDouble(scanner.nextLine().trim());
+
+                            System.out.println("Skriv en beskrivning om produkten:");
+                            String description = scanner.nextLine().trim();
+
+                            Phone phone = new Phone(articleNumber, title, price, description);
+
+                            lists.addProduct(phone);
+
+                            System.out.println("Mobiltelefonen är nu tillagd med artikelnummer " + articleNumber );
                         }
                         case "3" -> {
-                            System.out.println("3");
+                            System.out.println("Lägg till ett artikelnummer");
+                            int articleNumber = Integer.parseInt(scanner.nextLine().trim());
+
+                            System.out.println("Skriv vad TV'n heter:");
+                            String title = scanner.nextLine().trim();
+
+                            System.out.println("Vad kostar varan i kronor? Skriv endast siffror:");
+                            double price = Double.parseDouble(scanner.nextLine().trim());
+
+                            System.out.println("Skriv en beskrivning om produkten:");
+                            String description = scanner.nextLine().trim();
+
+                            Television tv = new Television(articleNumber, title, price, description);
+
+                            lists.addProduct(tv);
+
+                            System.out.println("TV'n är nu tillagd med artikelnummer " + articleNumber );
                         }
                         case "4" -> {
                             System.out.println("Går tillbaka..");
