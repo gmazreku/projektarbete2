@@ -102,16 +102,32 @@ public class Main {
                 }
                 case "2" -> {
                     for(Product p : lists.getProducts()){
-                        System.out.println("Artikelnr: " + p.getArticleNumber());
-                        System.out.println("Produkt: " + p.getTitle());
-                        System.out.println("Pris: " + p.getPrice() + " kr.");
-                        System.out.println("Beskrivning: " + p.getDescription());
-                        System.out.println("Kategori: " + p.category());
+                        System.out.println("# Artikelnr: " + p.getArticleNumber());
+                        System.out.println("# Produkt: " + p.getTitle());
+                        System.out.println("# Pris: " + p.getPrice() + " kr.");
+                        System.out.println("# Beskrivning: " + p.getDescription());
+                        System.out.println("# Kategori: " + p.category());
                         System.out.println("############################");
                     }
                 }
                 case "3" -> {
-                    // Visa info om produkt
+                    System.out.println("Ange artikelnummer på varan:");
+                    int articleNumber = Integer.parseInt(scanner.nextLine().trim());
+                    boolean found = false;
+
+                    for(Product p : lists.getProducts()){
+                        if(p.getArticleNumber() == articleNumber){
+                            System.out.println("# Artikelnr: " + p.getArticleNumber());
+                            System.out.println("# Produkt: " + p.getTitle());
+                            System.out.println("# Pris: " + p.getPrice() + " kr.");
+                            System.out.println("# Beskrivning: " + p.getDescription());
+                            System.out.println("# Kategori: " + p.category());
+                            found = true;
+                            break;
+                        }
+                    } if(!found) {
+                        System.out.println("Ingen produkt hittades med artikelnummer " + articleNumber + ". Försök igen.");
+                    }
                 }
                 case "4" -> {
                     System.out.println("Avslutar.. Välkommen åter.");
