@@ -3,7 +3,7 @@ package se.jensen.guven.webshop.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lists {
+public class ProductRepository {
     private List<Product> products;
 
     public List<Product> getProducts(){
@@ -11,7 +11,7 @@ public class Lists {
         return new ArrayList<>(products);
     }
 
-    public Lists(){
+    public ProductRepository(){
 
         this.products = new ArrayList<>();
     }
