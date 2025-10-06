@@ -1,28 +1,21 @@
 package se.jensen.guven.webshop.model;
 
-import java.util.Scanner;
+import se.jensen.guven.webshop.ui.UI;
 
 public class WebshopAdmin {
-    private Scanner scanner;
-    private ProductRepository productRepository;
+    private final UI ui;
+    private final ProductRepository productRepository;
 
-    public WebshopAdmin(Scanner scanner, ProductRepository productRepository){
-        this.scanner = scanner;
+    public WebshopAdmin(UI ui, ProductRepository productRepository){
+        this.ui = ui;
         this.productRepository = productRepository;
     }
 
     public void run(){
-        System.out.println("## VÄLKOMMEN TILL WEBSHOPEN! ##");
+        ui.info("\n## VÄLKOMMEN TILL WEBSHOPEN! ##\n");
         while(true){
-            System.out.println("Välj följande siffra för att gå vidare");
-            System.out.println("1. Lägg till produkt");
-            System.out.println("2. Lista alla upplagda produkter");
-            System.out.println("3. Visa info om produkt");
-            System.out.println("4. Avsluta");
-            System.out.println();
 
-            String input = scanner.nextLine().trim();
-
+            String input = ui.menu();
 
             switch(input) {
                 case "1" -> {
@@ -35,117 +28,104 @@ public class WebshopAdmin {
                     showProductInfo(input);
                 }
                 case "4" -> {
-                    System.out.println("Avslutar.. Välkommen åter.");
+                    ui.info("Avslutar.. Välkommen åter.");
                     return;
                 }
-                default -> System.out.println("Ogiltigt val, försök igen. \n");
+                default -> ui.info("Ogiltigt val, försök igen. \n");
             }
 
         }
     }
 
     public void userAddProduct (String input){
-        // Lägg till produkt loop
-        System.out.println("Vilken typ av produkt vill du lägga till?");
-        System.out.println("1. Dator");
-        System.out.println("2. Mobiltelefon");
-        System.out.println("3. TV");
-        System.out.println("4. Gå tillbaka. \n");
 
-        input = scanner.nextLine().trim();
+        ui.info("Vilken typ av produkt vill du lägga till?");
+        ui.info("1. Dator");
+        ui.info("2. Mobiltelefon");
+        ui.info("3. TV");
+        ui.info("4. Gå tillbaka. \n");
+
+        input = ui.prompt("");
         switch(input){
             case "1" -> {
-                System.out.println("Lägg till ett artikelnummer:");
-                int articleNumber = Integer.parseInt(scanner.nextLine().trim());
+                int articleNumber = Integer.parseInt(ui.prompt("Lägg till ett artikelnummer:"));
 
-                System.out.println("Skriv vad datorn heter:");
-                String title = scanner.nextLine().trim();
+                String title = ui.prompt("Skriv vad datorn heter:");
 
-                System.out.println("Vad kostar varan i kronor? Skriv endast siffror:");
-                double price = Double.parseDouble(scanner.nextLine().trim());
+                double price = Double.parseDouble(ui.prompt("Vad kostar varan i kronor? Skriv endast siffror:"));
 
-                System.out.println("Skriv en beskrivning om produkten:");
-                String description = scanner.nextLine().trim();
+                String description = ui.prompt("Skriv en beskrivning om produkten:");
 
                 Computer computer = new Computer(articleNumber, title, price, description);
 
                 productRepository.addProduct(computer);
 
-                System.out.println("Datorn är nu tillagd med artikelnummer " + articleNumber + "\n");
+                ui.info("Datorn är nu tillagd med artikelnummer " + articleNumber + "\n");
             }
             case "2" -> {
-                System.out.println("Lägg till ett artikelnummer");
-                int articleNumber = Integer.parseInt(scanner.nextLine().trim());
+                int articleNumber = Integer.parseInt(ui.prompt("Lägg till ett artikelnummer"));
 
-                System.out.println("Skriv vad telefonen heter:");
-                String title = scanner.nextLine().trim();
+                String title = ui.prompt("Skriv vad telefonen heter:");
 
-                System.out.println("Vad kostar varan i kronor? Skriv endast siffror:");
-                double price = Double.parseDouble(scanner.nextLine().trim());
+                double price = Double.parseDouble(ui.prompt("Vad kostar varan i kronor? Skriv endast siffror:"));
 
-                System.out.println("Skriv en beskrivning om produkten:");
-                String description = scanner.nextLine().trim();
+                String description = ui.prompt("Skriv en beskrivning om produkten:");
 
                 Phone phone = new Phone(articleNumber, title, price, description);
 
                 productRepository.addProduct(phone);
 
-                System.out.println("Mobiltelefonen är nu tillagd med artikelnummer " + articleNumber  + ". \n");
+                ui.info("Mobiltelefonen är nu tillagd med artikelnummer " + articleNumber  + ". \n");
             }
             case "3" -> {
-                System.out.println("Lägg till ett artikelnummer");
-                int articleNumber = Integer.parseInt(scanner.nextLine().trim());
+                int articleNumber = Integer.parseInt(ui.prompt("Lägg till ett artikelnummer"));
 
-                System.out.println("Skriv vad TV'n heter:");
-                String title = scanner.nextLine().trim();
+                String title = ui.prompt("Skriv vad TV'n heter:");
 
-                System.out.println("Vad kostar varan i kronor? Skriv endast siffror:");
-                double price = Double.parseDouble(scanner.nextLine().trim());
+                double price = Double.parseDouble(ui.prompt("Vad kostar varan i kronor? Skriv endast siffror:"));
 
-                System.out.println("Skriv en beskrivning om produkten:");
-                String description = scanner.nextLine().trim();
+                String description = ui.prompt("Skriv en beskrivning om produkten:");
 
                 Television tv = new Television(articleNumber, title, price, description);
 
                 productRepository.addProduct(tv);
 
-                System.out.println("TV'n är nu tillagd med artikelnummer " + articleNumber  + ".\n");
+                ui.info("TV'n är nu tillagd med artikelnummer " + articleNumber  + ".\n");
             }
             case "4" -> {
-                System.out.println("Går tillbaka..");
+                ui.info("Går tillbaka..");
                 break;
             }
-            default -> System.out.println("Ogiltigt val, skriv siffran igen. \n");
+            default -> ui.info("Ogiltigt val, skriv siffran igen. \n");
         }
     }
     public void userListProduct(String input){
         for(Product p : productRepository.getProducts()){
-            System.out.println("# Artikelnr: " + p.getArticleNumber());
-            System.out.println("# Produkt: " + p.getTitle());
-            System.out.println("# Pris: " + p.getPrice() + " kr.");
-            System.out.println("# Beskrivning: " + p.getDescription());
-            System.out.println("# Kategori: " + p.category());
-            System.out.println("############################ \n");
+            ui.info("# Artikelnr: " + p.getArticleNumber());
+            ui.info("# Produkt: " + p.getTitle());
+            ui.info("# Pris: " + p.getPrice() + " kr.");
+            ui.info("# Beskrivning: " + p.getDescription());
+            ui.info("# Kategori: " + p.category());
+            ui.info("############################ \n");
         }
     }
 
     public void showProductInfo(String input){
-        System.out.println("Ange artikelnummer på varan:");
-        int articleNumber = Integer.parseInt(scanner.nextLine().trim());
+        int articleNumber = Integer.parseInt(ui.prompt("Ange artikelnummer på varan:"));
         boolean found = false;
 
         for(Product p : productRepository.getProducts()){
             if(p.getArticleNumber() == articleNumber){
-                System.out.println("# Artikelnr: " + p.getArticleNumber());
-                System.out.println("# Produkt: " + p.getTitle());
-                System.out.println("# Pris: " + p.getPrice() + " kr.");
-                System.out.println("# Beskrivning: " + p.getDescription());
-                System.out.println("# Kategori: " + p.category() + "\n");
+                ui.info("# Artikelnr: " + p.getArticleNumber());
+                ui.info("# Produkt: " + p.getTitle());
+                ui.info("# Pris: " + p.getPrice() + " kr.");
+                ui.info("# Beskrivning: " + p.getDescription());
+                ui.info("# Kategori: " + p.category() + "\n");
                 found = true;
                 break;
             }
         } if(!found) {
-            System.out.println("Ingen produkt hittades med artikelnummer " + articleNumber + ". Försök igen. \n");
+            ui.info("Ingen produkt hittades med artikelnummer " + articleNumber + ". Försök igen. \n");
         }
     }
 }

@@ -1,6 +1,7 @@
 package se.jensen.guven.webshop;
 
 import se.jensen.guven.webshop.model.*;
+import se.jensen.guven.webshop.ui.ConsoleUI;
 
 import java.util.Scanner;
 
@@ -9,7 +10,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ProductRepository productRepository = new ProductRepository();
 
-        WebshopAdmin webAdmin = new WebshopAdmin(scanner, productRepository);
+        ConsoleUI ui = new ConsoleUI(scanner);
+        WebshopAdmin webAdmin = new WebshopAdmin(ui, productRepository);
+
         webAdmin.run();
 
     }
