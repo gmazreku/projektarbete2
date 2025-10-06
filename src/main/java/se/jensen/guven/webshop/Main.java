@@ -9,8 +9,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ProductRepository productRepository = new ProductRepository();
 
-        Menu menu = new Menu(scanner, productRepository);
-        menu.showMenu();
+        WebshopAdmin webAdmin = new WebshopAdmin(scanner, productRepository);
+        webAdmin.run();
 
     }
 }
