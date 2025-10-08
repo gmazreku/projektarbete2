@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Läser in scanner för att sen skicka vidare till UI
         Scanner scanner = new Scanner(System.in);
         ProductRepository productRepository = new ProductRepository();
 
