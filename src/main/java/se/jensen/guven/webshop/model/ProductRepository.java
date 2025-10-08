@@ -36,7 +36,7 @@ public class ProductRepository {
         // Loopar genom alla produkter och bygger en rad för varje produkt med | som separator.
         for(Product p : products){
             content = content
-                    + p.getClass() + "|"
+                    + p.getClass().getSimpleName() + "|" // Vi använder getSimpleName så att den endast skriver ut kategorin i txt filen.
                     + p.getArticleNumber() + "|"
                     + p.getTitle() + "|"
                     + p.getPrice() + "|"
