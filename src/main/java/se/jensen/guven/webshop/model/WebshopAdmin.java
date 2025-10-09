@@ -4,7 +4,7 @@ import se.jensen.guven.webshop.ui.UI;
 
 public class WebshopAdmin {
     // UI för att hantera användarkommunikation, ProductRepository för produkterna.
-    // Sätter final för att vi inte ska kunna skriva över informationen i efterhand.
+    // Final säkerställer att vi inte byter ut objekten efter konstruktorn.
     private final UI ui;
     private final ProductRepository productRepository;
 
