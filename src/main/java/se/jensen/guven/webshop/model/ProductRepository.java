@@ -36,7 +36,7 @@ public class ProductRepository {
         // Loopar genom alla produkter och bygger en rad för varje produkt med | som separator.
         for(Product p : products){
             content = content
-                    + p.getClass().getSimpleName() + "|" // Vi använder getSimpleName så att den endast skriver ut kategorin i txt filen.
+                    + p.getClass().getSimpleName() + "|" // Vi använder getSimpleName så att den endast skriver ut kategorin i txt filen(t.ex Phone).
                     + p.getArticleNumber() + "|"
                     + p.getTitle() + "|"
                     + p.getPrice() + "|"
@@ -46,7 +46,7 @@ public class ProductRepository {
         // Skriver hela innehållet till filen, skriver felmeddelande om det blir något sådant.
         Path file = Path.of(filename);
         try {
-            Files.writeString(file, content);
+            Files.writeString(file, content); // Finns det ingen fil så skapas den här.
         } catch (IOException e){
             System.err.println("Fel vid skrivning: " + e.getMessage());
         }
@@ -56,10 +56,10 @@ public class ProductRepository {
 
         Path file = Path.of(filename);
         try {
-            // Läser alla rader från filen till en lista, loopar genom alla produkter och delar upp dem med en | separator.
+            // Läser alla rader från filen till en lista, loopar genom alla produkter och delar upp dem med en | separator i txt filen.
             List<String> lines = Files.readAllLines(file);
             for(String line : lines){
-                String[] parts = line.split("\\|"); // "\\" används eftersom specialtecken i regex (frågat AI efter jag fick massa problem)
+                String[] parts = line.split("\\|"); // "\\" används eftersom specialtecknet | finns i något som heter regex (frågat AI efter jag fick massa problem)
                 int articleNumber = Integer.parseInt(parts[1]);
                 String title = parts[2];
                 double price = Double.parseDouble(parts[3]);
