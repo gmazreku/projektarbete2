@@ -1,4 +1,9 @@
-package se.jensen.guven.webshop.model;
+package se.jensen.guven.webshop.repository;
+
+import se.jensen.guven.webshop.model.Computer;
+import se.jensen.guven.webshop.model.Phone;
+import se.jensen.guven.webshop.model.Product;
+import se.jensen.guven.webshop.model.Television;
 
 import java.io.IOException;
 import java.nio.file.Files;

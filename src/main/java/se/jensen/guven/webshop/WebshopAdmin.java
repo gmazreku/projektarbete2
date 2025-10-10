@@ -1,5 +1,10 @@
-package se.jensen.guven.webshop.model;
+package se.jensen.guven.webshop;
 
+import se.jensen.guven.webshop.model.Computer;
+import se.jensen.guven.webshop.model.Phone;
+import se.jensen.guven.webshop.model.Product;
+import se.jensen.guven.webshop.model.Television;
+import se.jensen.guven.webshop.repository.ProductRepository;
 import se.jensen.guven.webshop.ui.UI;
 
 public class WebshopAdmin {
@@ -33,7 +38,7 @@ public class WebshopAdmin {
                 }
                 case "2" -> {
                     // Lista alla produkter
-                    userListProduct(input);
+                    userListProduct();
                 }
                 case "3" -> {
                     // Visa information om tillagd produkt
@@ -116,7 +121,7 @@ public class WebshopAdmin {
             default -> ui.info("Ogiltigt val, skriv siffran igen. \n");
         }
     }
-    public void userListProduct(String input){
+    public void userListProduct(){
         // Här listar vi produkterna som användaren har lagt till med en for loop
         for(Product p : productRepository.getProducts()){
             ui.info("# Artikelnr: " + p.getArticleNumber());

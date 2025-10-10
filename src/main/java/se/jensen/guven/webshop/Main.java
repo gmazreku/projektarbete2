@@ -1,6 +1,6 @@
 package se.jensen.guven.webshop;
 
-import se.jensen.guven.webshop.model.*;
+import se.jensen.guven.webshop.repository.ProductRepository;
 import se.jensen.guven.webshop.ui.ConsoleUI;
 
 import java.util.Scanner;
